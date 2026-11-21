@@ -1,18 +1,25 @@
 # Hostel Maintenance Tracker
 
-A Python command-line application designed to register hostel maintenance requests, track their resolution status, filter records, and generate summary reports.
+A Python command-line application designed to register hostel maintenance requests, track their resolution status, view paginated records, and generate visual analytics charts.
 
-## How to Run
-1. Make sure Python 3 is installed on your computer.
-2. Open your terminal or command prompt in this folder.
-3. Run the program:
+## Features
+- **Register Maintenance Requests**: Log student name, room number, category (Plumbing, Electrical, Carpentry, Cleaning), priority (Low, Medium, High), and issue description with automatic deadline calculation.
+- **Paginated Viewing**: View records cleanly in pages of 5 items at a time.
+- **Status Tracking**: Update requests across `Pending`, `In Progress`, and `Resolved` states.
+- **Safe Data Persistence**: Uses context managers (`with open(...)`) and automatic JSON backups (`hostel_data_backup.json`) to prevent data loss.
+- **Visual Analytics**: Generate status distribution bar charts using `matplotlib`.
+- **Automated Unit Tests**: Built-in `unittest` suite (`test_tracker.py`) verifying file persistence and backup integrity.
+
+## Setup & Usage
+1. Install optional visualization library:
+   ```bash
+   pip install matplotlib
+   ```
+2. Run the application:
    ```bash
    python hostel_tracker.py
    ```
-
-## Features
-- **Register New Request**: Logs student name, room number, category, issue description, and priority level with automatic deadline calculation.
-- **Update Request Status**: Update requests between `Pending`, `In Progress`, and `Resolved`.
-- **Search & Filter**: View all records or filter by category, status, or keyword.
-- **Executive Summary**: Displays total counts, resolution percentage, and alerts for overdue tasks.
-- **Data Persistence**: Automatically saves all records to `hostel_records.json` and supports exporting reports to `maintenance_report.txt`.
+3. Run automated tests:
+   ```bash
+   python -m unittest test_tracker.py
+   ```
